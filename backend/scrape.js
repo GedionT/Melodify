@@ -15,29 +15,35 @@ async function scrapeText(url) {
     // const rawTxt = await txt.jsonValue();
     // console.log(rawTxt);
 
-    var p ;
+    var p;
     var arrOfWords = [];
     //going through all the p tags 
-    for ( p of pAll) {
+    for (p of pAll) {
         //getting the content 
         let txt = await p.getProperty('textContent');
         let rawTxt = await txt.jsonValue();
+        // console.log(rawTxt);
+        // console.log(arrOfWordsNew);
+
         //splitting the words from 
         arrOfWordsNew = rawTxt.split(' ');
         //adding to the array of words 
         arrOfWords = arrOfWords.concat(arrOfWordsNew);
 
-        //getting the first character of words 
-
-        // 
-
-        // console.log(rawTxt);
-        // console.log(arrOfWordsNew);
-
     }
-    console.log(arrOfWords)
 
+    //top 150 
+    arrOfWords = arrOfWords.slice(0, 150)
+    // console.log(arrOfWords)
+
+    //getting the first character of words 
+    var wordAndLength = arrOfWords.map((a) => [a, a.length])
+    var charAndLength = arrOfWords.map((a) => [a[0], a.length])
+
+    console.log(charAndLength);
+    console.log(wordAndLength);
     browser.close();
+    return wordAndLength;
 
 }
 
