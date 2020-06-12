@@ -3,7 +3,7 @@
 This is a starter file for everyone on the team to pick up and continue.
 
 # Frontend 
-Simplistic interface with minimal design
+Simplistic interface with minimal design, go check https://www.figma.com/file/K1mzN5JjbL7pdGzwYnuzIh/Melodify?node-id=6%3A6
 Audio logic inspiration https://www.freecodecamp.org/news/javascript-piano-keyboard/
 Since the logic used by the website above uses keypress to make the sounds,
 we need custom logic on the playKeyboard.js file
