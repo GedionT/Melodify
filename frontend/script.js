@@ -7,7 +7,7 @@ function play() {
     const params = {url: urlInput.value}
     console.log(urlInput.value);
     //get request to the function 
-    axios.get(URL + 'scrape', params)
+    axios.get(URL + '/scrape', params)
     .then(data=>console.log(data))
     .catch(err=>console.log(err))
 

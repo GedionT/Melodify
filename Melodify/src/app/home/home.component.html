@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Melodify</title>
+		<!-- <script src="audiosynth.js"></script>
+		<script src="playKeyboard.js"></script> -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	</head>
+	<body>
+		<div class="d-flex flex-column align-items-center">
+			<h1>Melodify</h1>
+			<p>2020 MLH Same Home Different Hacks</p>
+			<div>
+				<input #urlBox required>
+				<button (click)="play(urlBox.value)">GO</button>
+			</div>
+		</div>
+	</body>
+</html>
