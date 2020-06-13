@@ -3,17 +3,27 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Melodify</title>
-		<!-- <script src="audiosynth.js"></script>
-		<script src="playKeyboard.js"></script> -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 	</head>
 	<body>
-		<div class="d-flex flex-column align-items-center">
-			<h1>Melodify</h1>
-			<p>2020 MLH Same Home Different Hacks</p>
-			<div>
-				<input #urlBox required>
-				<button (click)="play(urlBox.value)">GO</button>
+		<div class="d-flex flex-column align-items-center vw-100 vh-100 border border-dark" style="background-color: #E7D7C1;">
+			<div class="h-25 w-100 d-flex flex-column justify-content-center align-items-center">
+				<div class="d-flex align-items-center">
+					<svg class="bi bi-music-note" width="1.2em" height="1.2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+						<path d="M9 13c0 1.105-1.12 2-2.5 2S4 14.105 4 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
+						<path fill-rule="evenodd" d="M9 3v10H8V3h1z"/>
+						<path d="M8 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 13 2.22V4L8 5V2.82z"/>
+					</svg>
+					<h1> Melodify </h1>
+					<svg class="bi bi-music-note" width="1.2em" height="1.2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+						<path d="M9 13c0 1.105-1.12 2-2.5 2S4 14.105 4 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
+						<path fill-rule="evenodd" d="M9 3v10H8V3h1z"/>
+						<path d="M8 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 13 2.22V4L8 5V2.82z"/>
+					</svg>
+				</div>
+			
+				
+				<p>Melodify scrapes a website of your choice and plays a song based on the content</p>
 			</div>
 
 			<div class="w-75 d-flex justify-content-center align-items-center ">

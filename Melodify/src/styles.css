@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face{
+  font-family: 'Balsamiq Sans';
+  src: url(./assets/Balsamiq_Sans/BalsamiqSans-Regular.ttf) format('truetype')
+}
+
+* {
+  font-family: 'Balsamiq Sans';
+}
