@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer');
+// import axios from 'axios'
 
 
 
@@ -47,4 +48,21 @@ async function scrapeText(url) {
 
 }
 
-scrapeText('https://en.wikipedia.org/wiki/Angular_(web_framework)');
+//scrapeText('https://en.wikipedia.org/wiki/Angular_(web_framework)');
+
+
+
+//const URL = "http://localhost:3000/";
+
+function play() {
+    var urlInput = document.getElementById('url');
+    const params = {url: urlInput.value}
+    console.log(urlInput.value);
+    var scrapped = scrapeText(urlInput.value);
+    console.log(scrapped)
+    //get request to the function 
+    // axios.get(URL + '/scrape', params)
+    // .then(data=>console.log(data))
+    // .catch(err=>console.log(err))
+
+}
