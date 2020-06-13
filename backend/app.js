@@ -47,11 +47,12 @@ async function scrapeText(url) {
   console.loog(wordAndLength);
   browser.close();
   res.json(...wordAndLength);
-
+  //res.send()
   browser.close();
+  return (wordAndLength);
 }
-
-scrapeText(url);
+  scrapped = scrapeText(url);
+res.send(scrapped);
 });
 
 
