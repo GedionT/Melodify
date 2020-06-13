@@ -45,7 +45,11 @@
 					
 				</div>
 				<div class="border bg-light border-light mt-4 ml-3" style="width: 45%; height: 90%; border-radius: 20px 20px 20px 20px ">
-					
+					<div class="d-flex w-100 h-100 flex-wrap p-2 overflow-auto">
+						<p *ngFor="let note of notesArray" >
+							{{note[0]}} &nbsp;
+						</p>
+					</div>
 				</div>
 			</div>
 			<!-- <div class="mb-3">
