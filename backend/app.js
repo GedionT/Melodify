@@ -14,6 +14,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/scrape', function(req, res, next) {
 
+// the wikipedia page is to be removed
 const url = req.body.url || 'https://en.wikipedia.org/wiki/Angular_(web_framework)';
 
 async function scrapeText(url) {
@@ -44,7 +45,7 @@ async function scrapeText(url) {
   var charAndLength = arrOfWords.map((a) => [a[0], a.length]);
 
   console.log(charAndLength);
-  console.loog(wordAndLength);
+  console.log(wordAndLength);
   browser.close();
   res.json(...wordAndLength);
 
