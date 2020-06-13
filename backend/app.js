@@ -1,9 +1,8 @@
 const puppeteer = require('puppeteer');
-const express   = require('express');
-const logger    = require('morgan');
 const path      = require('path');
+const logger    = require('morgan');
 const http      = require('http');
-
+const express   = require('express');
 const app = express();
 
 app.set('x-powered-by', false);
@@ -26,9 +25,9 @@ app.use(function (req, res, next) {
   next();
 })
 
+
 app.post('/scrape', function(req, res, next) {
 
-// the wikipedia page is to be removed
 const url = req.body.url || 'https://en.wikipedia.org/wiki/Angular_(web_framework)';
 
 async function scrapeText(url) {
@@ -40,14 +39,18 @@ async function scrapeText(url) {
  
   var p;
   var arrOfWords = [];
-
+  //going through all the p tags
   for( p of pAll){
+    //getting the content
     let txt = await p.getProperty('textContent');
     let rawTxt = await txt.jsonValue();
+    //splitting the words from 
     arrOfWordsNew = rawTxt.split(' ');
+    //adding to the array of words 
     arrOfWords = arrOfWords.concat(arrOfWordsNew);
   }
   
+  // top 150 words
   arrOfWords = arrOfWords.slice(0, 150);
  
   // getting the first character of words
