@@ -1,146 +1,341 @@
-async function playKeyboard() {
+function playKeyboard(){
 
 	let pressColor = '#1BC0EA'; //color when key is pressed
 
 
 	var isMobile = !!navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i);
-	if (isMobile) { var evtListener = ['touchstart', 'touchend']; } else { var evtListener = ['mousedown', 'mouseup']; }
+	if(isMobile) { var evtListener = ['touchstart', 'touchend']; } else { var evtListener = ['mousedown', 'mouseup']; }
 
 	var __audioSynth = new AudioSynth();
 	__audioSynth.setVolume(0.5);
 	var __octave = 4; //sets position of middle C, normally the 4th octave
-
+	
 
 	// Key bindings, notes to keyCodes.
-
-	var arrayNormal = [
-		[ 'A', 7 ],        [ '(', 9 ],        [ 'r', 8 ],        [ 't', 2 ],
-         [ 'a', 2 ],        [ '"', 8 ],        [ '2', 3 ],        [ 'o', 2 ],
-         [ '"', 8 ],        [ 'v', 2 ],        [ 'a', 3 ],       [ 'a', 13 ],
-         [ 'i', 2 ],        [ 'a', 1 ],       [ 'T', 16 ],       [ 'o', 11 ],
-         [ 'w', 3 ],       [ 'a', 11 ],        [ 'f', 9 ],        [ 'l', 3 ],
-         [ 'b', 2 ],        [ 't', 3 ],        [ 'A', 7 ],        [ 'T', 4 ],
-         [ 'a', 2 ],        [ 'G', 6 ],        [ 'a', 3 ],        [ 'b', 2 ],
-         [ 'a', 1 ],        [ 'c', 9 ],        [ 'o', 2 ],       [ 'i', 11 ],
-         [ 'a', 3 ],       [ 'c', 13 ],        [ 'A', 7 ],        [ 'i', 2 ],
-         [ 'a', 1 ],        [ 'c', 8 ],        [ 'r', 7 ],        [ 'f', 4 ],
-         [ 't', 3 ],        [ 's', 4 ],        [ 't', 4 ],        [ 't', 4 ],
-         [ 'b', 5 ],       [ 'A', 11 ],        [ 'A', 7 ],        [ 'w', 3 ],
-         [ 'd', 8 ],        [ 'a', 2 ],        [ 'a', 1 ],        [ 'g', 9 ],
-         [ 'r', 7 ],        [ 'o', 2 ],       [ 'A', 11 ],       [ 'O', 11 ],
-         [ 't', 3 ],        [ 'r', 7 ],        [ 'o', 2 ],        [ 'A', 9 ],
-         [ 'w', 3 ],        [ 'c', 6 ],        [ '"', 8 ],        [ '2', 3 ],
-         [ 'b', 3 ],        [ 't', 4 ],        [ 'l', 3 ],        [ 't', 2 ],
-         [ 'c', 9 ],        [ 'a', 5 ],       [ 'd', 11 ],        [ 'T', 2 ],
-         [ 'c', 8 ],        [ 't', 3 ],        [ 'T', 4 ],        [ 'a', 9 ],
-         [ 't', 4 ],        [ 's', 8 ],        [ 't', 5 ],        [ 's', 6 ],
-         [ 'b', 2 ],        [ 'u', 4 ],        [ 'f', 3 ],        [ 'e', 4 ],
-         [ 'f', 9 ],        [ 'w', 4 ],       [ '"', 11 ],        [ 'r', 9 ],
-         [ 't', 2 ],        [ 't', 3 ],        [ '1', 3 ],        [ 'v', 8 ],
-         [ 'a', 3 ],        [ '"', 9 ],        [ 'w', 7 ],        [ 't', 3 ],
-         [ '"', 4 ],        [ 'r', 9 ],        [ 't', 2 ],        [ 'v', 8 ],
-
-	]
-
-	//convert all characters to lower case 
-	var arrayLowerCase = []
-	var len = []
-	for (let a of arrayNormal) {
-		arrayLowerCase = arrayLowerCase.concat(a[0].toLowerCase())
-		len = len.concat(a[1])
-	}
-	console.log(arrayLowerCase);
-	console.log(len);
-
 	var keyboard = {
+			
+			/* ~ */
+			192: 'C,-2',
 
-		a: 'D#,-1',
+			/* 1 */
+			49: 'C#,-2',
 
-		b: 'C#,-1',
+			/* 2 */
+			50: 'D,-2',
 
-		c: 'D,-1',
+			/* 3 */
+			51: 'D#,-2',
 
-		d: 'E,-1',
+			/* 4 */
+			52: 'E,-2',
 
-		e: 'F,-1',
+			/* 5 */
+			53: 'F,-2',
 
-		f: 'F#,-1',
+			/* 6 */
+			54: 'F#,-2',
 
-		g: 'G,-1',
+			/* 7 */
+			55: 'G,-2',
 
-		h: 'G#,-1',
+			/* 8 */
+			56: 'G#,-2',
 
-		i: 'A,-1',
+			/* 9 */
+			57: 'A,-2',
 
-		j: 'A#,-1',
+			/* 0 */
+			48: 'A#,-2',
 
-		k: 'B,-1',
+			/* - */
+			189: 'B,-2',
 
-		l: 'C,0',
+			/* = */
+			187: 'C,-1',
 
-		m: 'C#,0',
+			/* Q */
+			81: 'C#,-1',
 
-		n: 'D,0',
+			/* W */
+			87: 'D,-1',
 
-		o: 'D#,0',
+			/* E */
+			69: 'D#,-1',
 
-		p: 'E,0',
+			/* R */
+			82: 'E,-1',
 
-		q: 'F,0',
+			/* T */
+			84: 'F,-1',
 
-		r: 'F#,0',
+			/* Y */
+			89: 'F#,-1',
 
-		s: 'G,0',
+			/* U */
+			85: 'G,-1',
 
-		t: 'G#,0',
+			/* I */
+			73: 'G#,-1',
 
-		u: 'A,0',
+			/* O */
+			79: 'A,-1',
 
-		v: 'A#,0',
+			/* P */
+			80: 'A#,-1',
 
-		w: 'B,0',
+			/* [ */
+			219: 'B,-1',
 
-		x: 'C,1',
+			/* ] */
+			221: 'C,0',
 
-		y: 'C#,1',
+			/* A */
+			65: 'C#,0',
 
-		z: 'D,1'
+			/* S */
+			83: 'D,0',
 
-	};
+			/* D */
+			68: 'D#,0',
 
-	//to select the instrument to play
+			/* F */
+			70: 'E,0',
+
+			/* G */
+			71: 'F,0',
+
+			/* H */
+			72: 'F#,0',
+
+			/* J */
+			74: 'G,0',
+
+			/* K */
+			75: 'G#,0',
+
+			/* L */
+			76: 'A,0',
+
+			/* ; */
+			186: 'A#,0',
+
+			/* " */
+			222: 'B,0',
+			
+
+			/* Z */
+			90: 'C,1',
+
+			/* X */
+			88: 'C#,1',
+
+			/* C */
+			67: 'D,1',
+
+			/* V */
+			86: 'D#,1',
+
+			/* B */
+			66: 'E,1',
+
+			/* N */
+			78: 'F,1',
+
+			/* M */
+			77: 'F#,1',
+
+			/* , */
+			188: 'G,1',
+
+			/* . */
+			190: 'G#,1',
+
+			/* / */
+			191: 'A,1',
+
+			/* <- */
+			37: 'A#,1',
+
+			/* -> */
+			39: 'B,1',
+		
+		};
+	
+	var reverseLookupText = {};
+	var reverseLookup = {};
+
+	// Create a reverse lookup table.
+	for(var i in keyboard) {
+	
+		var val;
+
+		switch(i|0) { //some characters don't display like they are supposed to, so need correct values
+		
+			case 187: //equal sign
+				val = 61; //???
+				break;
+			
+			case 219: //open bracket
+				val = 91; //left window key
+				break;
+			
+			case 221: //close bracket
+				val = 93; //select key
+				break;
+			
+			case 188://comma
+				val = 44; //print screen
+				break;
+			//the fraction 3/4 is displayed for some reason if 190 wasn't replaced by 46; it's still the period key either way
+			case 190: //period
+				val = 46; //delete
+				break;
+			
+			default:
+				val = i;
+				break;
+			
+		}
+	
+		reverseLookupText[keyboard[i]] = val;
+		reverseLookup[keyboard[i]] = i;
+	
+	}
+
+	// Keys you have pressed down.
+	var keysPressed = [];
+
+	// Generate keyboard
+	let visualKeyboard = document.getElementById('keyboard');
 	let selectSound = {
 		value: "0" //piano
 	};
 
+	var iKeys = 0;
+	var iWhite = 0;
+	var notes = __audioSynth._notes; //C, C#, D....A#, B
+
+	for(var i=-2;i<=1;i++) {
+		for(var n in notes) {
+			if(n[2]!='b') {
+				var thisKey = document.createElement('div');
+				if(n.length>1) { //adding sharp sign makes 2 characters
+					thisKey.className = 'black key'; //2 classes
+					thisKey.style.width = '30px';
+					thisKey.style.height = '120px';
+					thisKey.style.left = (40 * (iWhite - 1)) + 25 + 'px';
+				} else {
+					thisKey.className = 'white key';
+					thisKey.style.width = '40px';
+					thisKey.style.height = '200px';
+					thisKey.style.left = 40 * iWhite + 'px';
+					iWhite++;
+				}
+
+				var label = document.createElement('div');
+				label.className = 'label';
+
+				let s = getDispStr(n,i,reverseLookupText);
+
+				label.innerHTML = '<b class="keyLabel">' + s + '</b>' + '<br /><br />' + n.substr(0,1) +
+					'<span name="OCTAVE_LABEL" value="' + i + '">' + (__octave + parseInt(i)) + '</span>' + (n.substr(1,1)?n.substr(1,1):'');
+				thisKey.appendChild(label);
+				thisKey.setAttribute('ID', 'KEY_' + n + ',' + i);
+				thisKey.addEventListener(evtListener[0], (function(_temp) { return function() { fnPlayKeyboard({keyCode:_temp}); } })(reverseLookup[n + ',' + i]));
+				visualKeyboard[n + ',' + i] = thisKey;
+				visualKeyboard.appendChild(thisKey);
+				
+				iKeys++;
+			}
+		}
+	}
+
+	visualKeyboard.style.width = iWhite * 40 + 'px';
+
+	window.addEventListener(evtListener[1], function() { n = keysPressed.length; while(n--) { fnRemoveKeyBinding({keyCode:keysPressed[n]}); } });
+	
+
+// Detect keypresses, play notes.
+
+	var fnPlayKeyboard = function(e) {
+	
+		var i = keysPressed.length;
+		while(i--) {
+			if(keysPressed[i]==e.keyCode) {
+				return false;	
+			}
+		}
+		keysPressed.push(e.keyCode);
+
+		if(keyboard[e.keyCode]) {
+			if(visualKeyboard[keyboard[e.keyCode]]) {
+				visualKeyboard[keyboard[e.keyCode]].style.backgroundColor = pressColor;
+				//visualKeyboard[keyboard[e.keyCode]].classList.add('playing'); //adding class only affects keypress and not mouse click
+				visualKeyboard[keyboard[e.keyCode]].style.marginTop = '5px';
+				visualKeyboard[keyboard[e.keyCode]].style.boxShadow = 'none';
+			}
+			var arrPlayNote = keyboard[e.keyCode].split(',');
+			var note = arrPlayNote[0];
+			var octaveModifier = arrPlayNote[1]|0;
+			fnPlayNote(note, __octave + octaveModifier);
+		} else {
+			return false;	
+		}
+	
+	}
+	// Remove key bindings once note is done.
+	var fnRemoveKeyBinding = function(e) {
+	
+		var i = keysPressed.length;
+		while(i--) {
+			if(keysPressed[i]==e.keyCode) {
+				if(visualKeyboard[keyboard[e.keyCode]]) {
+					//visualKeyboard[keyboard[e.keyCode]].classList.remove('playing');
+					visualKeyboard[keyboard[e.keyCode]].style.backgroundColor = '';
+					visualKeyboard[keyboard[e.keyCode]].style.marginTop = '';
+					visualKeyboard[keyboard[e.keyCode]].style.boxShadow = '';
+				}
+				keysPressed.splice(i, 1);
+			}
+		}
+	
+	}
 	// Generates audio for pressed note and returns that to be played
-	var fnPlayNote = function (note, octave, duration) {
-		src = __audioSynth.generate(selectSound.value, note, octave, duration);
+	var fnPlayNote = function(note, octave) {
+
+		src = __audioSynth.generate(selectSound.value, note, octave, 2);
 		container = new Audio(src);
-		container.addEventListener('ended', function () { container = null; });
-		container.addEventListener('loadeddata', function (e) { e.target.play(); });
+		container.addEventListener('ended', function() { container = null; });
+		container.addEventListener('loadeddata', function(e) { e.target.play(); });
 		container.autoplay = false;
 		container.setAttribute('type', 'audio/wav');
 		container.load();
 		return container;
-
+	
 	};
 
-	function timeout(ms) {
-		return new Promise(resolve => setTimeout(resolve, ms));
-	}
-	for (let i = 0; i<=arrayLowerCase.length; i++) {
-		a=arrayLowerCase[i]
-		if (keyboard[a[0]] !== undefined) {
-			console.log(keyboard[a[0]])
+	//returns correct string for display
+	function getDispStr(n,i,lookup) {
 
-			var arrPlayNote = keyboard[a[0]].split(',');
-
-			var note = arrPlayNote[0];
-			var octaveModifier = arrPlayNote[1] | 0;
-			fnPlayNote(note, __octave + octaveModifier, len[i]);
-			await timeout( len[i] * 200);
-			console.log(len[i])
+		if(n=='C' && i==-2){
+			return "~";
+		}else if(n=='B' && i==-2){
+			return "-";
+		}else if(n=='A#' && i==0){
+			return ";";
+		}else if(n=='B' && i==0){
+			return "\"";
+		}else if(n=='A' && i==1){
+			return "/";
+		}else if(n=='A#' && i==1){
+			return "<-";
+		}else if(n=='B' && i==1){
+			return "->";
+		}else{
+			return String.fromCharCode(lookup[n + ',' + i]);
 		}
+
 	}
+	window.addEventListener('keydown', fnPlayKeyboard);
+	window.addEventListener('keyup', fnRemoveKeyBinding);
 }
