@@ -88,6 +88,9 @@ async function playKeyboard(array) {
 	//to select the instrument to play
 	let selectSound = {
 		value: "0" //piano
+			// "1" //organ
+			// "2" //acoustic
+			// "3" //edm
 	};
 
 	// Generates audio for pressed note and returns that to be played
