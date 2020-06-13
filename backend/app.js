@@ -1,8 +1,9 @@
 const puppeteer = require('puppeteer');
-const path      = require('path');
-const logger    = require('morgan');
-const http      = require('http');
 const express   = require('express');
+const logger    = require('morgan');
+const path      = require('path');
+const http      = require('http');
+
 const app = express();
 
 app.set('x-powered-by', false);
@@ -26,18 +27,14 @@ async function scrapeText(url) {
  
   var p;
   var arrOfWords = [];
-  //going through all the p tags
+
   for( p of pAll){
-    //getting the content
     let txt = await p.getProperty('textContent');
     let rawTxt = await txt.jsonValue();
-    //splitting the words from 
     arrOfWordsNew = rawTxt.split(' ');
-    //adding to the array of words 
     arrOfWords = arrOfWords.concat(arrOfWordsNew);
   }
   
-  // top 150 words
   arrOfWords = arrOfWords.slice(0, 150);
  
   // getting the first character of words
@@ -47,6 +44,7 @@ async function scrapeText(url) {
   console.log(charAndLength);
   console.log(wordAndLength);
   browser.close();
+  
   res.json(...wordAndLength);
 
   browser.close();
