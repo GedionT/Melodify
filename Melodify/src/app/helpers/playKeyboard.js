@@ -5,7 +5,7 @@ var AudioSynth = audioSynth.AudioSynth;
 
 var keyboard = {
 
-	z: 'C,-1',
+	a: 'C,-1',
 	y: 'C#,-1',
 	x: 'D,-1',
 	w: 'D#,-1',
@@ -30,7 +30,7 @@ var keyboard = {
 	d: 'A#,0',
 	c: 'B,0',
 	b: 'C,1',
-	a: 'C#,1',
+	z: 'C#,1',
 };
 
 
@@ -40,8 +40,9 @@ function toKeyboardArray(array) {
 	let keyboardArray = arrayLowerCase.map(function (a) {
 		if (keyboard[a[0][0]] !== undefined)
 			return [keyboard[a[0][0]], a[1], i++]
-		else return [keyboard['a'], 1, i++]
+		else return [keyboard['a'], a[1], i++]
 	});
+	console.log(keyboardArray)
 	return keyboardArray;
 }
 
@@ -49,7 +50,7 @@ function toKeyboardArray(array) {
 async function playKeyboard(keyboardArray) {
 
 	var __audioSynth = new AudioSynth();
-	__audioSynth.setVolume(0.5);
+	__audioSynth.setVolume(0.01);
 	var __octave = 4; //sets position of middle C, normally the 4th octave
 
 	//to select the instrument to play
@@ -84,6 +85,7 @@ async function playKeyboard(keyboardArray) {
 		var note = arrPlayNote[0];
 		var octaveModifier = arrPlayNote[1] | 0;
 		fnPlayNote(note, __octave + octaveModifier, ka[1]);
+		console.log("playKeyboard: " + ka)
 		await timeout(ka[1] * 200);
 
 	}

@@ -37,18 +37,23 @@
 
 			<div class="h-100 w-100 d-flex justify-content-center">
 				<div class="border bg-light border-light mt-4 mr-3 shadow"  style="width: 45%; height: 90%; border-radius: 20px 20px 20px 20px">
-					<div class="d-flex w-100 h-100 flex-wrap p-2 overflow-auto">
-						<p *ngFor="let t of text" id="{{t}}" >
-							{{t[0]}} &nbsp;
-						</p>
+					<div class="d-flex w-100 h-100 flex-wrap p-2 overflow-auto" id="text">
+						<div *ngFor="let t of text" id="text{{t[2]}}">
+							<div>
+								{{t[0]}} &nbsp;
+							</div>
+						</div>
 					</div>
 					
 				</div>
 				<div class="border bg-light border-light mt-4 ml-3" style="width: 45%; height: 90%; border-radius: 20px 20px 20px 20px ">
 					<div class="d-flex w-100 h-100 flex-wrap p-2 overflow-auto">
-						<p *ngFor="let note of notesArray" >
-							{{note[0]}} &nbsp;
-						</p>
+						<div *ngFor="let note of notesArray; let isLast=last" id="note{{note[2]}}" >
+							<div *ngIf="isLast && renderFlag==false">{{setRenderTrue()}}</div>
+							<div>
+								{{note[0]}} &nbsp;
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
