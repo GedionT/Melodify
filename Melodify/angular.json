@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Melodify"
+    }
+  },
+  "defaultProject": "Melodify",
+  "cli": {
+    "analytics": false
+  }
 }
