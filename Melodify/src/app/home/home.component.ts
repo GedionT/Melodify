@@ -9,12 +9,15 @@ import playKeyboard from '../helpers/playKeyboard';
 export class HomeComponent implements OnInit {
   constructor(private musicService: MusicServiceService) {}
 
+  text = [];
+
   ngOnInit(): void {}
 
   play(url) {
     console.log(url);
     this.musicService.scrapeSite(url).subscribe((data) => {
       console.log(data);
+      this.text = data;
       playKeyboard(data);
     });
   }
