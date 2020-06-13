@@ -6,7 +6,7 @@
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 	</head>
 	<body>
-		<div class="d-flex flex-column align-items-center vw-100 vh-100 border border-dark" style="background-color: #FBA69D;">
+		<div class="d-flex flex-column align-items-center vw-100 vh-100 border border-dark" style="background-color: #E7D7C1;">
 			<div class="h-25 w-100 d-flex flex-column justify-content-center align-items-center">
 				<div class="d-flex align-items-center">
 					<svg class="bi bi-music-note" width="1.2em" height="1.2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -28,17 +28,17 @@
 
 			<div class="w-75 d-flex justify-content-center align-items-center ">
 				<div class="input-group mb-3">
-					<input type="text" #urlBox class="form-control" placeholder="Enter a Website URL to scrape">
+					<input type="text" #urlBox class="form-control shadow" placeholder="Enter a Website URL to scrape" >
 					<div class="input-group-append">
-						<button class="btn btn-outline-light bg-dark" (click)="play(urlBox.value)" type="button">Search</button>
+						<button class="btn btn-dark shadow" (click)="play(urlBox.value)" type="button">Search</button>
 					</div>
 				</div>
 			</div>
 
 			<div class="h-100 w-100 d-flex justify-content-center">
-				<div class="border bg-light border-light mt-4 mr-3" style="width: 45%; height: 90%; border-radius: 20px 20px 20px 20px">
+				<div class="border bg-light border-light mt-4 mr-3 shadow"  style="width: 45%; height: 90%; border-radius: 20px 20px 20px 20px">
 					<div class="d-flex w-100 h-100 flex-wrap p-2 overflow-auto">
-						<p *ngFor="let t of text" >
+						<p *ngFor="let t of text" id="{{t}}" >
 							{{t[0]}} &nbsp;
 						</p>
 					</div>
