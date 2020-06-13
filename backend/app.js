@@ -1,9 +1,8 @@
 const puppeteer = require('puppeteer');
-const express   = require('express');
-const logger    = require('morgan');
 const path      = require('path');
+const logger    = require('morgan');
 const http      = require('http');
-
+const express   = require('express');
 const app = express();
 
 app.set('x-powered-by', false);
@@ -12,10 +11,23 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(function (req, res, next) {
+  // Website you wish to allow to connect
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+  // Request methods you wish to allow
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  // Request headers you wish to allow
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  // Set to true if you need the website to include cookies in the requests sent
+  // to the API (e.g. in case you use sessions)
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  // Pass to next layer of middleware
+  next();
+})
 
-app.get('/scrape', function(req, res, next) {
 
-// the wikipedia page is to be removed
+app.post('/scrape', function(req, res, next) {
+
 const url = req.body.url || 'https://en.wikipedia.org/wiki/Angular_(web_framework)';
 
 async function scrapeText(url) {
@@ -27,30 +39,32 @@ async function scrapeText(url) {
  
   var p;
   var arrOfWords = [];
-
+  //going through all the p tags
   for( p of pAll){
+    //getting the content
     let txt = await p.getProperty('textContent');
     let rawTxt = await txt.jsonValue();
+    //splitting the words from 
     arrOfWordsNew = rawTxt.split(' ');
+    //adding to the array of words 
     arrOfWords = arrOfWords.concat(arrOfWordsNew);
   }
   
+  // top 150 words
   arrOfWords = arrOfWords.slice(0, 150);
  
   // getting the first character of words
   var wordAndLength = arrOfWords.map((a) => [a, a.length]);
   var charAndLength = arrOfWords.map((a) => [a[0], a.length]);
 
-  console.log(charAndLength);
+  // console.log(charAndLength);
   console.log(wordAndLength);
-  browser.close();
-  
-  res.json(...wordAndLength);
 
+  res.send(wordAndLength);
   browser.close();
+  return (wordAndLength);
 }
-
-scrapeText(url);
+  scrapeText(url);
 });
 
 
