@@ -17,6 +17,8 @@ export class HomeComponent implements OnInit {
   elem: Element;
   renderFlag = false;
 
+  playing = true;
+
   ngOnInit(): void {}
 
   play(url) {
