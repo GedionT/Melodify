@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class MusicServiceService {
-  root = "http://localhost:3000";
+  root = "http://localhost:5000";
 
   constructor(private http: HttpClient) { 
   }

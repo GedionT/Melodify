@@ -10,10 +10,10 @@ app.set('x-powered-by', false);
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, '/Melodify/dist/Melodify')));
+// app.use(express.static(path.join(__dirname, '/dist/Melodify')));
 
 
-// app.use(express.static(__dirname + '/dist/name-of-my-app'));
+app.use(express.static(__dirname + '/dist/Melodify'));
 // res.sendFile(path.join(__dirname+'/dist/name-of-my-app/index.html'));
 
 app.use(function (req, res, next) {
@@ -31,9 +31,9 @@ app.use(function (req, res, next) {
 })
 
 app.get('*', function(req, res, next) {
-    // res.sendFile(path.resolve(__dirname + '/melodify/dist/Melodify/index.html'));
-    const index = path.join(__dirname, 'Melodify/dist/Melodify', 'index.html');
-    res.sendFile(index);
+    res.sendFile(path.resolve(__dirname + '/dist/Melodify/index.html'));
+    // const index = path.join(__dirname, '/dist/Melodify', 'index.html');
+    // res.sendFile(index);
 });
 
 app.post('/scrape', function(req, res, next) {
