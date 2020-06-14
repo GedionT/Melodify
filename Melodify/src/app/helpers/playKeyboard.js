@@ -58,7 +58,7 @@ async function playKeyboard(keyboardArray, stop) {
 
 	//to select the instrument to play
 	let selectSound = {
-		value: "0" 
+		value: "1" 
 		//"0" //piano
 		// "1" //organ
 		// "2" //acoustic
@@ -89,7 +89,7 @@ async function playKeyboard(keyboardArray, stop) {
 		var arrPlayNote = ka[0].split(',');
 		var note = arrPlayNote[0];
 		var octaveModifier = arrPlayNote[1] | 0;
-		listContainers.push(fnPlayNote(note, __octave + octaveModifier, ka[1] * 0.25));
+		listContainers.push(fnPlayNote(note, __octave + octaveModifier, ka[1] * 0.35));
 		if (stop.value) {
 			listContainers.map((container) => {
 				container.addEventListener('loadeddata', function (e) { e.target.pause(); })
