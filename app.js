@@ -28,7 +28,7 @@ app.use(function (req, res, next) {
 
 app.get('*', function(req, res, next) {
     // res.sendFile(path.resolve(__dirname + '/melodify/dist/Melodify/index.html'));
-    const index = path.join(__dirname, 'build', 'index.html');
+    const index = path.join(__dirname, 'melodify/dist/Melodify', 'index.html');
     res.sendFile(index);
 });
 
