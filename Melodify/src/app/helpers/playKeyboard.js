@@ -46,20 +46,22 @@ function toKeyboardArray(array) {
 }
 
 
-async function playKeyboard(keyboardArray, pause, index) {
+async function playKeyboard(keyboardArray, pause, index, selectSound) {
 
 	var __audioSynth = new AudioSynth();
 	__audioSynth.setVolume(0.01);
 	var __octave = 4; //sets position of middle C, normally the 4th octave
 
 	//to select the instrument to play
-	let selectSound = {
-		value: "1"
-		//"0" //piano
-		// "1" //organ
-		// "2" //acoustic
-		// "3" //edm
-	};
+	// let selectSound = {
+	// 	value: "1"
+	// 	//"0" //piano
+	// 	// "1" //organ
+	// 	// "2" //acoustic
+	// 	// "3" //edm
+	// };
+	
+
 
 	// Generates audio for pressed note and returns that to be played
 	var fnPlayNote = function (note, octave, duration) {
@@ -92,6 +94,7 @@ async function playKeyboard(keyboardArray, pause, index) {
 			listContainers.map((container) => {
 				container.addEventListener('loadeddata', function (e) { e.target.pause(); })
 			});
+			break;
 		}
 
 		await timeout(ka[1] * 200);
@@ -100,6 +103,7 @@ async function playKeyboard(keyboardArray, pause, index) {
 			listContainers.map((container) => {
 				container.addEventListener('loadeddata', function (e) { e.target.pause(); })
 			});
+			break;
 		}
 		index++;
 	}

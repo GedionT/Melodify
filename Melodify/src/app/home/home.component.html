@@ -61,9 +61,16 @@
 			</div>
 			<div class="input-group-append">
 				<button class="btn btn-dark shadow" (click)="stopButton()" type="button">stop</button>
-			</div>
-			<div class="input-group-append">
 				<button class="btn btn-dark shadow" (click)="playPauseButton()" type="button">Play/Pause</button>
+
+				
+				
+				<button class="btn btn-dark shadow" (click)="setSound('0')" type="button">Piano</button> 
+				<button class="btn btn-dark shadow" (click)="setSound('1')" type="button">Organ</button>
+				<button class="btn btn-dark shadow" (click)="setSound('2')" type="button">Acoustic</button>
+				<button class="btn btn-dark shadow" (click)="setSound('3')" type="button">EDM</button>
+
+
 			</div>
 			<!-- <div class="mb-3">
 				Made with <svg class="bi bi-heart" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

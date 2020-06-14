@@ -16,8 +16,19 @@ export class HomeComponent implements OnInit {
   elem: Element;
   renderFlag = false;
 
+  selectSound = {
+    value: '1',
+    // 	//"0" //piano
+    // 	// "1" //organ
+    // 	// "2" //acoustic
+    // 	// "3" //edm
+  };
+
   ngOnInit(): void {}
 
+  setSound(val) {
+    this.selectSound.value = val;
+  }
   play(url) {
     this.pause.value = false;
     this.musicService.scrapeSite(url).subscribe((arrayTextLength) => {
@@ -27,7 +38,7 @@ export class HomeComponent implements OnInit {
       this.text = arrayTextLength;
       this.notesArray = toKeyboardArray(arrayTextLength);
       // console.log('notes array: ' + this.notesArray);
-      playKeyboard(this.notesArray, this.pause, this.index);
+      playKeyboard(this.notesArray, this.pause, this.index, this.selectSound);
     });
   }
 
@@ -50,7 +61,7 @@ export class HomeComponent implements OnInit {
     else {
       //paused
       this.pause.value = false;
-      playKeyboard(this.notesArray, this.pause, this.index);
+      playKeyboard(this.notesArray, this.pause, this.index, this.selectSound);
       this.setRenderTrue();
     }
   }
