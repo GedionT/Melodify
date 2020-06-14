@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   index = 0;
   elem: Element;
   renderFlag = false;
-
+  playing = true;
   selectSound = {
     value: '1',
     // 	//"0" //piano
@@ -29,7 +29,14 @@ export class HomeComponent implements OnInit {
   setSound(val) {
     this.selectSound.value = val;
   }
+
+  instrumentSelect($event){
+    this.selectSound.value = $event.target.value;
+    console.log(this.selectSound.value+"")
+  }
+  
   play(url) {
+    this.stopButton();
     this.pause.value = false;
     this.musicService.scrapeSite(url).subscribe((arrayTextLength) => {
       let i = 0;

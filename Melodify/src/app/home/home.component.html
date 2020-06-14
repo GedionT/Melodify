@@ -39,20 +39,22 @@
 	
 					<div class="w-100 d-flex justify-content-center" >
 						<div class="input-group mb-3 w-50 shadow">
-							<select name="instrumentSelect"class="custom-select" id="inputGroupSelect02">
+							<select name="instrumentSelect" (change)="instrumentSelect($event)" class="custom-select" id="inputGroupSelect02">
 								<option selected>Instrument Selection</option>
-								<option value="1">One</option>
-								<option value="2">Two</option>
-								<option value="3">Three</option>
+								<option value="0">Piano</option>
+								<option value="1">Organ</option>
+								<option value="2">Acoustic</option>
+								<option value="3">EDM</option>
+
 							</select>
 						</div>
 		
 						<div class="d-flex ml-2">
 							<div *ngIf="playing">
-								<button (click)="playing =! playing" class="btn btn-dark shadow mr-2">Pause</button> 
+								<button (click)="playing =! playing; playPauseButton()" class="btn btn-dark shadow mr-2">Pause</button> 
 							</div>
 							<div *ngIf="!playing">
-								<button (click)="playing =! playing" class="btn btn-dark shadow ml-2">Play</button>
+								<button (click)="playing =! playing; playPauseButton()" class="btn btn-dark shadow ml-2">Play</button>
 							</div>
 						</div>
 					</div>
