@@ -9,15 +9,15 @@ app.set('x-powered-by', false);
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'melodify/dist')));
+app.use(express.static('./melodify/dist'));
 
 app.use(function (req, res, next) {
   // Website you wish to allow to connect - #localhost will be replaced with domain name for prod server
   res.setHeader('Access-Control-Allow-Origin', '*');
   // Request methods you wish to allow
-  res.setHeader('Access-Control-Allow-Methods', 'POST', 'GET');
+  res.setHeader('Access-Control-Allow-Methods', 'GET', 'POST');
   // Request headers you wish to allow
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  res.setHeader('Access-Control-Allow-Headers', '*');
   // Set to true if you need the website to include cookies in the requests sent
   // to the API (e.g. in case you use sessions)
   res.setHeader('Access-Control-Allow-Credentials', true);
@@ -25,8 +25,8 @@ app.use(function (req, res, next) {
   next();
 })
 
-app.get('/', (req,res) => {
-  res.sendFile(process.cwd()+"/melodify/dist/pathname/index.html");
+app.get('/*', function(req, res) {
+  res.sendFile('index.html', {root: 'melodify/dist/Melodify/'});
 });
 
 app.post('/scrape', function(req, res, next) {
@@ -69,7 +69,6 @@ async function scrapeText(url) {
 }
   scrapeText(url);
 });
-
 
 var server = http.createServer(app);
 

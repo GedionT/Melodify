@@ -2,10 +2,13 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "12.9.1"
   },
   "keywords": [],
   "author": "",
@@ -15,5 +18,8 @@
     "morgan": "^1.10.0",
     "path": "^0.12.7",
     "puppeteer": "^3.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }
