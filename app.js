@@ -3,6 +3,7 @@ const path      = require('path');
 const logger    = require('morgan');
 const http      = require('http');
 const express   = require('express');
+const { debug } = require('console');
 const app = express();
 
 app.set('x-powered-by', false);
@@ -25,8 +26,17 @@ app.use(function (req, res, next) {
   next();
 })
 
-app.get('/*', function(req, res) {
-  res.sendFile('index.html', {root: 'melodify/dist/Melodify/'});
+app.get('/*', function(req, res, next) {
+  var options = {
+    root: __dirname+ '/melodify/dist/Melodify/',
+    dotfiles: 'deny',
+   };
+
+   res.sendFile('index.html', options, function(err) {
+     if (err) next(err);
+     else 
+       debug('index.html sent');
+   });
 });
 
 app.post('/scrape', function(req, res, next) {
@@ -74,5 +84,5 @@ var server = http.createServer(app);
 
 server.listen(process.env.PORT || 5000);
 server.on('error', (err) => console.log('Error Starting Server', error));
-server.on('listening', () => console.log('Server Running on port 3000'));
+server.on('listening', () => console.log('Server Running on port 5000'));
 
