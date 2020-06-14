@@ -5,10 +5,10 @@
 } */
 
 @font-face{
-  font-family: 'Balsamiq Sans';
-  src: url(./assets/Balsamiq_Sans/BalsamiqSans-Regular.ttf) format('truetype')
+  font-family: 'Prata', serif;
+  src: url(./assets/Prata/Prata-Regular.ttf) format('truetype')
 }
 
 * {
-  font-family: 'Balsamiq Sans';
+  font-family: 'Prata', serif;
 }
