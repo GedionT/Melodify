@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 import { MusicServiceService } from './music-service.service';
-import { HomeComponent } from './home/home.component'
+import { HomeComponent } from './home/home.component';
+import { AboutPageComponent } from './about-page/about-page.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    AboutPageComponent
   ],
   imports: [
     BrowserModule,
