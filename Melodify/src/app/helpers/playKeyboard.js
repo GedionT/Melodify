@@ -42,15 +42,11 @@ function toKeyboardArray(array) {
 			return [keyboard[a[0][0]], a[1], i++]
 		else return [keyboard['a'], a[1], i++]
 	});
-	// console.log(keyboardArray)
 	return keyboardArray;
 }
 
 
-async function playKeyboard(keyboardArray, stop) {
-
-	console.log(stop)
-	// stop.value=true;
+async function playKeyboard(keyboardArray, pause, index) {
 
 	var __audioSynth = new AudioSynth();
 	__audioSynth.setVolume(0.01);
@@ -58,7 +54,7 @@ async function playKeyboard(keyboardArray, stop) {
 
 	//to select the instrument to play
 	let selectSound = {
-		value: "1" 
+		value: "1"
 		//"0" //piano
 		// "1" //organ
 		// "2" //acoustic
@@ -69,10 +65,8 @@ async function playKeyboard(keyboardArray, stop) {
 	var fnPlayNote = function (note, octave, duration) {
 		var src = __audioSynth.generate(selectSound.value, note, octave, duration);
 		var container = new Audio(src);
-
 		container.addEventListener('ended', function () { container = null; });
 		container.addEventListener('loadeddata', function (e) { e.target.play(); });
-
 		container.autoplay = false;
 		container.setAttribute('type', 'audio/wav');
 		container.load();
@@ -84,26 +78,30 @@ async function playKeyboard(keyboardArray, stop) {
 		return new Promise(resolve => setTimeout(resolve, ms));
 	}
 	let listContainers = []
-	for (var ka of keyboardArray) {
 
+	while (index <= keyboardArray.length) {
+		let ka = keyboardArray[index];
 		var arrPlayNote = ka[0].split(',');
 		var note = arrPlayNote[0];
 		var octaveModifier = arrPlayNote[1] | 0;
-		listContainers.push(fnPlayNote(note, __octave + octaveModifier, ka[1] * 0.35));
-		if (stop.value) {
+		var container = fnPlayNote(note, __octave + octaveModifier, ka[1] * 0.35);
+
+		listContainers.push(container);
+
+		if (pause.value) {
 			listContainers.map((container) => {
 				container.addEventListener('loadeddata', function (e) { e.target.pause(); })
-
-			})
+			});
 		}
 
 		await timeout(ka[1] * 200);
-		if (stop.value) {
+
+		if (pause.value) {
 			listContainers.map((container) => {
 				container.addEventListener('loadeddata', function (e) { e.target.pause(); })
-
-			})
+			});
 		}
+		index++;
 	}
 }
 

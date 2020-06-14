@@ -7,10 +7,9 @@ import { playKeyboard, toKeyboardArray } from '../helpers/playKeyboard';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-
 export class HomeComponent implements OnInit {
   constructor(private musicService: MusicServiceService) {}
-  stop = { value: false };
+  pause = { value: false };
   text = [];
   notesArray = [];
   index = 0;
@@ -20,8 +19,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {}
 
   play(url) {
-    this.stop.value = false;
-    console.log(this.stop);
+    this.pause.value = false;
     this.musicService.scrapeSite(url).subscribe((arrayTextLength) => {
       let i = 0;
       arrayTextLength = arrayTextLength.map((a) => [a[0], a[1], i++]);
@@ -29,7 +27,7 @@ export class HomeComponent implements OnInit {
       this.text = arrayTextLength;
       this.notesArray = toKeyboardArray(arrayTextLength);
       // console.log('notes array: ' + this.notesArray);
-      playKeyboard(this.notesArray, this.stop);
+      playKeyboard(this.notesArray, this.pause, this.index);
     });
   }
 
@@ -38,29 +36,41 @@ export class HomeComponent implements OnInit {
   }
 
   stopButton() {
-    this.stop.value = true;
+    this.pause.value = true;
     this.index = 0;
     this.renderFlag = false;
-    //remove all the highlight here 
-    this.text=[];
-    this.notesArray=[];
+    //remove all the highlight here
+    this.text = [];
+    this.notesArray = [];
+  }
+
+  playPauseButton() {
+    //playing
+    if (!this.pause.value) this.pause.value = true;
+    else {
+      //paused
+      this.pause.value = false;
+      playKeyboard(this.notesArray, this.pause, this.index);
+      this.setRenderTrue();
+    }
   }
 
   async setRenderTrue() {
     this.renderFlag = true;
+    let word;
+    while (this.index <= this.text.length) {
+      word = this.text[this.index];
+      document
+        .getElementById('text' + this.index.toString())
+        .classList.add('highlight');
+      document
+        .getElementById('note' + this.index.toString())
+        .classList.add('highlight');
 
-    for (let i of this.text) {
-      if (this.index <= this.text.length) {
-        document.getElementById('text' + this.index.toString()).classList.add('highlight');
-        document.getElementById('note' + this.index.toString()).classList.add('highlight');
-      
-        await this.timeout(i[1] * 200);
-        if (this.stop.value) break;
-        this.index++;
-      }
+      await this.timeout(word[1] * 200);
+      if (this.pause.value) break;
+      this.index++;
     }
-    this.index = 0;
     return;
   }
 }
-
