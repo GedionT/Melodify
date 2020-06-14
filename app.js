@@ -29,7 +29,7 @@ app.use(function (req, res, next) {
 app.get('/*', function(req, res, next) {
   var options = {
     root: __dirname+ '/melodify/dist/Melodify/',
-    dotfiles: 'deny',
+    dotfiles: 'deny'
    };
 
    res.sendFile('index.html', options, function(err) {
