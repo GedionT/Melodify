@@ -26,7 +26,7 @@ app.use(function (req, res, next) {
 })
 
 app.get('/', (req,res) => {
-  res.sendFile(process.cwd()+"/melodify/dist/Melodify/index.html");
+  res.sendFile(path.join(__dirname, "/melodify/dist/Melodify/index.html"));
 });
 
 app.post('/scrape', function(req, res, next) {
@@ -69,7 +69,6 @@ async function scrapeText(url) {
 }
   scrapeText(url);
 });
-
 
 var server = http.createServer(app);
 
