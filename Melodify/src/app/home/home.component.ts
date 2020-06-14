@@ -51,12 +51,9 @@ export class HomeComponent implements OnInit {
 
     for (let i of this.text) {
       if (this.index <= this.text.length) {
-        // if (document.getElementsByClassName('highlight')[0]!== undefined){
-        // document.getElementsByClassName('highlight')[0].classList.remove('highlight')
         document.getElementById('text' + this.index.toString()).classList.add('highlight');
         document.getElementById('note' + this.index.toString()).classList.add('highlight');
-        console.log('dfdfd' + this.stop.value);
-
+      
         await this.timeout(i[1] * 200);
         if (this.stop.value) break;
         this.index++;
