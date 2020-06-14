@@ -42,12 +42,15 @@ function toKeyboardArray(array) {
 			return [keyboard[a[0][0]], a[1], i++]
 		else return [keyboard['a'], a[1], i++]
 	});
-	console.log(keyboardArray)
+	// console.log(keyboardArray)
 	return keyboardArray;
 }
 
 
-async function playKeyboard(keyboardArray) {
+async function playKeyboard(keyboardArray, stop) {
+
+	console.log(stop)
+	// stop.value=true;
 
 	var __audioSynth = new AudioSynth();
 	__audioSynth.setVolume(0.01);
@@ -55,7 +58,8 @@ async function playKeyboard(keyboardArray) {
 
 	//to select the instrument to play
 	let selectSound = {
-		value: "0" //piano
+		value: "1" 
+		//"0" //piano
 		// "1" //organ
 		// "2" //acoustic
 		// "3" //edm
@@ -68,6 +72,7 @@ async function playKeyboard(keyboardArray) {
 
 		container.addEventListener('ended', function () { container = null; });
 		container.addEventListener('loadeddata', function (e) { e.target.play(); });
+
 		container.autoplay = false;
 		container.setAttribute('type', 'audio/wav');
 		container.load();
@@ -78,16 +83,27 @@ async function playKeyboard(keyboardArray) {
 	function timeout(ms) {
 		return new Promise(resolve => setTimeout(resolve, ms));
 	}
-
+	let listContainers = []
 	for (var ka of keyboardArray) {
 
 		var arrPlayNote = ka[0].split(',');
 		var note = arrPlayNote[0];
 		var octaveModifier = arrPlayNote[1] | 0;
-		fnPlayNote(note, __octave + octaveModifier, ka[1]);
-		console.log("playKeyboard: " + ka)
-		await timeout(ka[1] * 200);
+		listContainers.push(fnPlayNote(note, __octave + octaveModifier, ka[1] * 0.35));
+		if (stop.value) {
+			listContainers.map((container) => {
+				container.addEventListener('loadeddata', function (e) { e.target.pause(); })
 
+			})
+		}
+
+		await timeout(ka[1] * 200);
+		if (stop.value) {
+			listContainers.map((container) => {
+				container.addEventListener('loadeddata', function (e) { e.target.pause(); })
+
+			})
+		}
 	}
 }
 
