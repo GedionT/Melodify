@@ -10,7 +10,7 @@ app.set('x-powered-by', false);
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, '/melodify/dist/Melodify/')));
+app.use(express.static(path.join(__dirname, '/melodify/dist/Melodify')));
 
 app.use(function (req, res, next) {
   // Website you wish to allow to connect - #localhost will be replaced with domain name for prod server
@@ -27,16 +27,7 @@ app.use(function (req, res, next) {
 })
 
 app.get('/*', function(req, res, next) {
-  var options = {
-    root: __dirname+ '/melodify/dist/Melodify/',
-    dotfiles: 'deny'
-   };
-
-   res.sendFile('index.html', options, function(err) {
-     if (err) next(err);
-     else 
-       debug('index.html sent');
-   });
+    res.sendFile(__dirname + '/melodify/dist/Melodify/index.html');
 });
 
 app.post('/scrape', function(req, res, next) {
