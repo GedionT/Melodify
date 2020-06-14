@@ -13,17 +13,27 @@
 					<div class="col-sm">
 					</div>
 					<div class="col-sm d-flex justify-content-center align-items-center">
-						<h1> <u>Melodify</u>  </h1>
+						<h1 class="d-flex align-items-center"> <svg class="bi bi-music-note-list mr-2" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+							<path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
+							<path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
+							<path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
+							<path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
+						</svg> <b> Melodify </b>  <svg class="bi bi-music-note-list ml-2 my-glyphicon" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+							<path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
+							<path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
+							<path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
+							<path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
+						</svg> </h1>
 					</div>
 
 					<div class="col-sm d-flex justify-content-end align-items-center">
-						<a [routerLink]="['about']" class="mr-2">	<button  class="btn btn-danger">About</button></a>
+						<a [routerLink]="['about']" class="mr-5">	<button  class="btn btn-danger">About</button></a>
 					</div>
 				</div>
 			</div>
 
 			<div class="w-100 d-flex flex-column align-items-center">
-				<p>Melodify scrapes a website of your choice and plays a song based on the content. </p>
+				<h5 class="mb-3">Ever wonder what a website sounds like? Melodify scrapes and composes a song based on any website you enter. Keep an open mind for some funky website music.  </h5>
 
 				<div class="w-100 d-flex justify-content-center align-items-start">
 					<div class="w-75 d-flex justify-content-center align-items-center ">
@@ -61,12 +71,13 @@
 			</div>
 			
 			<div class="h-100 w-100 d-flex justify-content-center">
+
 				<div class="border bg-light border-light mt-4 mr-3 shadow"  style="width: 45%; height: 90%; border-radius: 20px 20px 20px 20px">
 					<div class="d-flex w-100 h-100 flex-wrap p-2 overflow-auto" id="text">
 						<div class="m-2 w-100">
-							<h3 > <u>Text</u> </h3>
+							<h3 class="border-bottom border-dark">Text </h3>
 						</div>
-						<div *ngFor="let t of text" id="text{{t[2]}}">
+						<div *ngFor="let t of text" class="m-0" id="text{{t[2]}}">
 							<div>
 								{{t[0]}} &nbsp;
 							</div>
@@ -76,12 +87,12 @@
 				</div>
 				<div class="border bg-light border-light mt-4 ml-3 shadow" style="width: 45%; height: 90%; border-radius: 20px 20px 20px 20px ">
 					<div class="d-flex w-100 h-100 flex-wrap p-2 overflow-auto">
-						<div class="m-2 w-100">
-							<h3 ><u>Muscial Notes </u></h3>
+						<div class="m-1 w-100 ">
+							<h3 class="border-bottom border-dark">Muscial Notes</h3>
 						</div>
-						<div *ngFor="let note of notesArray; let isLast=last" id="note{{note[2]}}" >
-							<div *ngIf="isLast && renderFlag==false">{{setRenderTrue()}}</div>
-							<div>
+						<div *ngFor="let note of notesArray; let isLast=last"  class="m-0" id="note{{note[2]}}" >
+							<span class="m-0" *ngIf="isLast && renderFlag==false">{{setRenderTrue()}}</span>
+							<div class="m-0">
 								{{note[0]}} &nbsp;
 							</div>
 						</div>

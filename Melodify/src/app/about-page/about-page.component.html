@@ -9,60 +9,94 @@
 	<body>
 		<div class="d-flex flex-column align-items-center vw-100 vh-100" style="background-color: #E7D7C1;">
 
-      <div class="w-100 d-flex flex-column justify-content-center align-items-center" style="height: 20%;">
+      <div class="w-100 d-flex flex-column justify-content-center align-items-center" style="height: 14%;">
 					<div class="d-flex justify-content-center align-items-center">
-						<h1> <a class="text-decoration-none text-reset " [routerLink]="['']"><u>Melodify</u></a>  </h1>
+						<h1 class="d-flex align-items-center"> <svg class="bi bi-music-note-list mr-2" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+							<path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
+							<path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
+							<path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
+							<path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
+						</svg> <a class="text-decoration-none text-reset " [routerLink]="['']"><b>Melodify</b></a>   <svg class="bi bi-music-note-list ml-2 my-glyphicon" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+							<path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
+							<path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
+							<path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
+							<path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
+						</svg> </h1>
 					</div>
       </div>
 
-		
-		<div class="w-75">
-		The Melodify is a music generator that retrieves letters from the input website and translates it into pitches. It came out from a random idea, 
-		“how would it sound like if the website I am reading can play me a song?” A wikipedia page about Angular might sound like you are in a dungeon,
-		your facebook page might sound so out of tune and silly. You have the option to choose different instruments, from piano to edm. Try it out, and
-		hear what your favorite website tells you.
+		<div class="w-75 d-flex flex-column align-items-start">
+			<h2><b>Idea</b></h2>
+			<h4>
+				The Melodify is a music generator that retrieves words from the a website and translates it into musical notes. It came out from a random idea, 
+				"What does a website sound like?” A wikipedia page about Angular might sound like you are in a dungeon,
+				your facebook page might sound so out of tune and silly. You have the option to choose different instruments, from piano to edm. Try it out, and
+				hear what your favorite website tells you.
+			</h4>
 		</div>
 
-		<div class="d-flex flex-column align-items-center w-100">
-			<h2>The Team</h2>
+		<br>
+		
+		<div class="w-75 d-flex flex-column align-items-start">
+			<h2><b>How It Works</b></h2>
+			<h4>
+				We first scrape a website of a portion of its words. Depending on the word a mucical note will be assigned - The first letter will dictate note, meanwhile the length will dictate duration.
+				Using Keith William Horwood's dynamically generated synthetic keyboard we were able to map the words into a song. 
+			</h4>
+		</div>
+		
+		<br>
+
+		<div class="w-75 d-flex flex-column align-items-start">
+			<h2><b>Technologies</b></h2>
+			<h4>
+				Angular.js, Bootstrap, CSS, HTML, JavaScript, Node.js, Puppeteer, and Typescript.
+			</h4>
+		</div>
+		
+		<br>
+
+
+
+		<div class="d-flex flex-column align-items-center w-75">
 			<div class="d-flex w-100 justify-content-around align-items-center">
 				<div class="d-flex flex-column align-items-center">
-					<img  class="images mb-2" src="../../assets/yusra4.jpg"/>
+					<img  class="images mb-2 shadow rounded" src="../../assets/yusra4.jpg"/>
 					<h4>Yusra Irfan</h4>
 					<p>Missisauga, ON, Canada</p>
 					<p>Western University</p>
-					<div class="d-flex w-25 justify-content-around">
+					<div class="d-flex w-50 justify-content-around">
 						<a href="https://github.com/irfanyusra">	<i class="fa fa-github" style="font-size:36px"></i></a>
 						<a href="https://www.linkedin.com/in/irfanyusra/"><i class="fa fa-linkedin-square" style="font-size:36px"></i></a>
 					</div>
 				</div>
 				<div class="d-flex flex-column align-items-center">
-					<img  class="images mb-2" src="../../assets/judy3.jpg"/>
+					<img  class="images mb-2 shadow rounded" src="../../assets/judy3.jpg"/>
 					<h4>Judy Ham</h4>
 					<p>Richmond Hill, ON, Canada</p>
 					<p>York University</p>
-					<div class="d-flex w-25 justify-content-around">
+					<div class="d-flex w-50 justify-content-around">
 						<a href="https://github.com/judyyhha">	<i class="fa fa-github" style="font-size:36px"></i></a>
 						<a href="https://www.linkedin.com/in/yeonghyeon-ham/"><i class="fa fa-linkedin-square" style="font-size:36px"></i></a>
 					</div>
 					
 				</div>
 				<div class="d-flex flex-column align-items-center">
-					<img  class="images mb-2" src="../../assets/phil5.jpg"/>
+					<img  class="images mb-2 shadow rounded" src="../../assets/phil5.jpg"/>
 					<h4>Phillip Truong</h4>
 					<p>Niagara Falls, ON, Canada</p>
 					<p>Western University</p>
-					<div class="d-flex w-25 justify-content-around">
+					<div class="d-flex w-50 justify-content-around">
 						<a href="https://github.com/PhillipTruong">	<i class="fa fa-github" style="font-size:36px"></i></a>
 						<a href="https://www.linkedin.com/in/truonghphillip/"><i class="fa fa-linkedin-square" style="font-size:36px"></i></a>
 					</div>
 				</div>
 				<div class="d-flex flex-column align-items-center">
-					<img  class="images mb-2" src="../../assets/ged4.jpg"/>
+					<img  class="images mb-2 shadow rounded" src="../../assets/ged4.jpg"/>
 					<h4>Gedion Teshome</h4>
 					<p>Addis Ababa, ADD, Ethiopia</p>
 					<p>ADD Sci-Tech University</p>
-					<div class="d-flex w-25 justify-content-around">
+					<div class="d-flex w-50 justify-content-around">
 						<a href="https://github.com/GedionT">	<i class="fa fa-github" style="font-size:36px"></i></a>
 						<a href="https://www.linkedin.com/in/gedion-teshome-142431146/"><i class="fa fa-linkedin-square" style="font-size:36px"></i></a>
 					</div>
