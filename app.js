@@ -17,7 +17,7 @@ app.use(function (req, res, next) {
   // Request methods you wish to allow
   res.setHeader('Access-Control-Allow-Methods', 'POST', 'GET');
   // Request headers you wish to allow
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  res.setHeader('Access-Control-Allow-Headers', '*');
   // Set to true if you need the website to include cookies in the requests sent
   // to the API (e.g. in case you use sessions)
   res.setHeader('Access-Control-Allow-Credentials', true);
@@ -26,7 +26,7 @@ app.use(function (req, res, next) {
 })
 
 app.get('/', (req,res) => {
-  res.sendFile(process.cwd()+"/melodify/dist/pathname/index.html");
+  res.sendFile(process.cwd()+"/melodify/dist/Melodify/index.html");
 });
 
 app.post('/scrape', function(req, res, next) {
