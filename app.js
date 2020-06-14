@@ -27,16 +27,7 @@ app.use(function (req, res, next) {
 })
 
 app.get('/*', function(req, res, next) {
-  var options = {
-    root: __dirname+ '/melodify/dist/Melodify/',
-    dotfiles: 'deny'
-   };
-
-   res.sendFile('index.html', options, function(err) {
-     if (err) next(err);
-     else 
-       debug('index.html sent');
-   });
+    res.sendFile(__dirname + '/melodify/dist/Melodify/index.html');
 });
 
 app.post('/scrape', function(req, res, next) {
