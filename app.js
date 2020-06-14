@@ -26,8 +26,10 @@ app.use(function (req, res, next) {
   next();
 })
 
-app.get('/*', function(req, res, next) {
-    res.sendFile(path.resolve(__dirname + '/melodify/dist/Melodify/index.html'));
+app.get('*', function(req, res, next) {
+    // res.sendFile(path.resolve(__dirname + '/melodify/dist/Melodify/index.html'));
+    const index = path.join(__dirname, 'build', 'index.html');
+    res.sendFile(index);
 });
 
 app.post('/scrape', function(req, res, next) {
