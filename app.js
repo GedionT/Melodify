@@ -9,7 +9,7 @@ app.set('x-powered-by', false);
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static('./melodify/dist'));
+app.use(express.static('./melodify/dist/Melodify/'));
 
 app.use(function (req, res, next) {
   // Website you wish to allow to connect - #localhost will be replaced with domain name for prod server
