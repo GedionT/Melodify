@@ -3,7 +3,6 @@ const path      = require('path');
 const logger    = require('morgan');
 const http      = require('http');
 const express   = require('express');
-const { debug } = require('console');
 const app = express();
 
 app.set('x-powered-by', false);
@@ -36,17 +35,21 @@ app.get('*', function(req, res, next) {
     // res.sendFile(index);
 });
 
-app.post('/scrape', function(req, res, next) {
-  // remove the default wikipedia url on prod
-const url = req.body.url || 'https://en.wikipedia.org/wiki/Angular_(web_framework)'; 
+const pAll;
 
-async function scrapeText(url) {
+const scrape = async (url) => {
   const browser = await puppeteer.launch();
-  const page    = await browser.newPage();
+  const page = await browser.newPage();
   await page.goto(url);
 
-  const pAll = await page.$$('p');
- 
+ pAll = await page.$$('p');
+ browser.close();
+}
+
+app.get('/scrape', function(req, res) {
+      const url = `'${req.body.url}'` || 'https://en.wikipedia.org/wiki/Angular_(web_framework)'; 
+      scrape(url);
+
   var p;
   var arrOfWords = [];
   //going through all the p tags
@@ -71,15 +74,11 @@ async function scrapeText(url) {
   console.log(wordAndLength);
 
   res.send(wordAndLength);
-  browser.close();
-  return (wordAndLength);
-}
-  scrapeText(url);
 });
 
 var server = http.createServer(app);
 
 server.listen(process.env.PORT || 8080);
 server.on('error', (err) => console.log('Error Starting Server', error));
-server.on('listening', () => console.log('Server Running on port 5000'));
+server.on('listening', () => console.log('Server Running on port 8000'));
 
