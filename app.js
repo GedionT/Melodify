@@ -35,7 +35,7 @@ app.get('*', function(req, res, next) {
     // res.sendFile(index);
 });
 
-const pAll;
+const pAll = '';
 
 const scrape = async (url) => {
   const browser = await puppeteer.launch();
