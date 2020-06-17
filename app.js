@@ -79,7 +79,7 @@ async function scrapeText(url) {
 
 var server = http.createServer(app);
 
-server.listen(process.env.PORT || 5000);
+server.listen(process.env.PORT || 8080);
 server.on('error', (err) => console.log('Error Starting Server', error));
 server.on('listening', () => console.log('Server Running on port 5000'));
 
