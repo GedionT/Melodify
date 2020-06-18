@@ -9,14 +9,9 @@ app.set('x-powered-by', false);
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-// app.use(express.static(path.join(__dirname, '/dist/Melodify')));
-
-
 app.use(express.static(__dirname + '/dist/Melodify'));
-// res.sendFile(path.join(__dirname+'/dist/name-of-my-app/index.html'));
 
 app.use(function (req, res, next) {
-  // Website you wish to allow to connect - #localhost will be replaced with domain name for prod server
   res.setHeader('Access-Control-Allow-Origin', '*');
   // Request methods you wish to allow
   res.setHeader('Access-Control-Allow-Methods', 'GET', 'POST');
@@ -35,32 +30,27 @@ app.get('*', function(req, res, next) {
     // res.sendFile(index);
 });
 
-let pAll = '';
-
-const scrape = async (url) => {
-  const browser = await puppeteer.launch({ args: ['--no-sandbox','--disable-setuid-sandbox'], headless: true });
-  const page = await browser.newPage();
-  await page.goto(url);
-
- pAll = await page.$$('p');
- browser.close();
-}
-
 app.post('/scrape', async function(req, res) {
       const url = req.body.url; 
-      scrape(url);
-
-  var p;
-  var arrOfWords = [];
-  //going through all the p tags
-  for( p of pAll){
-    //getting the content
-    let txt = await p.getProperty('textContent');
-    let rawTxt = await txt.jsonValue();
-    //splitting the words from 
-    arrOfWordsNew = rawTxt.split(' ');
-    //adding to the array of words 
-    arrOfWords = arrOfWords.concat(arrOfWordsNew);
+  
+      async function scrape(url) {
+        const browser = await puppeteer.launch({ args: ['--no-sandbox','--disable-setuid-sandbox'], headless: true });
+        const page = await browser.newPage();
+        await page.goto(url);
+        
+        const pAll = await page.$$('p');
+        
+        var p;
+        var arrOfWords = [];
+       //going through all the p tags
+         for( p of pAll){
+           //getting the content
+           let txt = await p.getProperty('textContent');
+           let rawTxt = await txt.jsonValue();
+           //splitting the words from 
+          arrOfWordsNew = rawTxt.split(' ');
+          //adding to the array of words 
+          arrOfWords = arrOfWords.concat(arrOfWordsNew);
   }
   
   // top 150 words
@@ -72,8 +62,11 @@ app.post('/scrape', async function(req, res) {
 
   // console.log(charAndLength);
   console.log(wordAndLength);
-
   res.send(wordAndLength);
+  browser.close();
+       return(wordAndLength);
+   }
+  scrape(url);
 });
 
 var server = http.createServer(app);
