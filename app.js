@@ -26,8 +26,6 @@ app.use(function (req, res, next) {
 
 app.get("*", function (req, res, next) {
   res.sendFile(path.resolve(__dirname + "/dist/Melodify/index.html"));
-  // const index = path.join(__dirname, '/dist/Melodify', 'index.html');
-  // res.sendFile(index);
 });
 
 app.post("/scrape", async function (req, res) {
@@ -69,6 +67,7 @@ app.post("/scrape", async function (req, res) {
     browser.close();
     return wordAndLength;
   }
+
   scrape(url);
 });
 
