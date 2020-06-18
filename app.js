@@ -47,7 +47,7 @@ const scrape = async (url) => {
 }
 
 app.post('/scrape', async function(req, res) {
-      const url = `'${req.body.url}'` || 'https://en.wikipedia.org/wiki/Angular_(web_framework)'; 
+      const url = req.body.url; 
       scrape(url);
 
   var p;
