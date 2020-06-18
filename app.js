@@ -35,7 +35,7 @@ app.get('*', function(req, res, next) {
     // res.sendFile(index);
 });
 
-const pAll = '';
+let pAll = '';
 
 const scrape = async (url) => {
   const browser = await puppeteer.launch({ args: ['--no-sandbox','--disable-setuid-sandbox'], headless: true });
