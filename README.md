@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Melodify
 
 - www.melodify.tech
