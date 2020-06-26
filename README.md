@@ -1,6 +1,7 @@
 # Melodify
 
 - www.melodify.tech
+- [Hear your sites](melodi-fy.herokuapp.com)
 
 Ever wondered what a website content might sound like?
 Melodify was a weekend project built to do just that. Enter a URL of your
@@ -10,12 +11,12 @@ with a music sheet.
 # Design Concept
 
 The UI is a simplistic design with a minimal interface. It is designed on
-figma and can be found on this link [https://www.figma.com/file/K1mzN5JjbL7pdGzwYnuzIh/Melodify?node-id=6%3A6]
+Figma and can be found on this link, [Design](https://www.figma.com/file/K1mzN5JjbL7pdGzwYnuzIh/Melodify?node-id=6%3A6)
 
 # Inspiration
 
-Audio logic inspiration [https://www.freecodecamp.org/news/javascript-piano-keyboard/].
-Since the logic used by the website above uses ke-press to make sounds,we customized
+Audio logic inspiration [JS Piano](https://www.freecodecamp.org/news/javascript-piano-keyboard/).
+Since the logic used by the website above uses key-press to make sounds,we customized
 the logic on the playKeyboard.js file to fit our needs.
 
 # Frontend
