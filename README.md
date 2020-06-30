@@ -1,6 +1,5 @@
-# Melodify
+# [Melodify](www.melodify.tech)
 
-- www.melodify.tech
 - [Hear your sites](melodi-fy.herokuapp.com)
 
 Ever wondered what a website content might sound like?

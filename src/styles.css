@@ -1,15 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
-/* @font-face{
-  font-family: 'Balsamiq Sans';
-  src: url(./assets/Balsamiq_Sans/BalsamiqSans-Regular.ttf) format('truetype')
-} */
-
-@font-face{
-  font-family: 'Prata', serif;
-  src: url(./assets/Prata/Prata-Regular.ttf) format('truetype')
+/* @font-face {
+  font-family: 'Quicksand', sans-serif;
+  src: url('./assets//Quicksand/static/Quicksand-Regular.ttf');
 }
 
-* {
-  font-family: 'Prata', serif;
-  font-style: italic;
+*{
+  font-family: 'Quicksand', sans-serif;
+} */
+
+html{
+  width: 100%;
+  height: 100%;
+}
+
+body{
+  width: 100%;
+  height: 100%;
 }

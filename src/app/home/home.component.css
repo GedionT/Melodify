@@ -10,3 +10,146 @@
   filter: FlipH;
   -ms-filter: "FlipH";
 }
+
+p{
+  margin: 0;
+}
+
+.page{
+  width: 100vw;
+}
+
+.titleContent{
+  width: 100%;
+  text-align:  center;
+}
+
+.boxContent{
+  width: 100%;
+  height: 80vh;
+}
+
+.boxes{
+  width: 40%;
+  height: 90%;
+}
+
+.rowColumnSwitcher{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-bottom: 1em;
+}
+
+@media only screen and (orientation: portrait) {
+  .rowColumnSwitcher{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .boxes{
+    width: 90%;
+    height: 40%;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .title {
+    font-size: 1rem;
+  }
+  .subTitle {
+    font-size: 0.8rem;
+  }
+  .regularText {
+    font-size: 0.6rem;
+  }
+
+  .form-control, .btn{
+    font-size: 0.6rem;
+  }
+
+  .custom-select, .selectBtn{
+    font-size: 0.4rem;
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  .title {
+    font-size: 1rem;
+  }
+  .subTitle {
+    font-size: 0.9rem;
+  }
+  .regularText {
+    font-size: 0.7rem;
+  }
+
+  .form-control, .btn{
+    font-size: 0.5rem;
+  }
+
+  .custom-select, .selectBtn{
+    font-size: 0.4rem;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .title {
+    font-size: 1.1rem;
+  }
+  .subTitle {
+    font-size: 1rem;
+  }
+  .regularText {
+    font-size: 0.9rem;
+  }
+
+  .form-control, .btn{
+    font-size: 0.7rem;
+  }
+
+  .custom-select, .selectBtn{
+    font-size: 0.6rem;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .title {
+    font-size: 1.3rem;
+  }
+  .subTitle {
+    font-size: 1.2rem;
+  }
+  .regularText {
+    font-size: 1.1rem;
+  }
+
+  .form-control, .btn{
+    font-size: 0.8rem;
+  }
+
+  .custom-select, .selectBtn{
+    font-size: 0.7rem;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .title {
+    font-size: 1.5rem;
+  }
+  .subTitle {
+    font-size: 1.4rem;
+  }
+  .regularText {
+    font-size: 1.3rem;
+  }
+
+  .form-control, .btn{
+    font-size: 1.1rem;
+  }
+
+  .custom-select, .selectBtn{
+    font-size: 1.0rem;
+  }
+}
