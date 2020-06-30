@@ -1,0 +1,114 @@
+.navBar{
+  width: 100vw;
+  height: 10vh;
+}
+
+.melodifyLogo{
+  height: 90%;
+
+}
+
+.navText{
+  margin-bottom: 0;
+}
+
+.navTitle{
+  margin-bottom: 0;
+}
+
+@media only screen and (max-width: 575px) {
+  .melodifyLogo{
+    height: 40%;
+    margin-left: 0.5em;
+  }
+  .navText{
+    font-size: 0.8rem;
+    margin-right: 0.5em;
+  }
+  
+  .navTitle{
+    font-size: 1rem;
+    margin-left: 0.5em;
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  .melodifyLogo{
+    height: 40%;
+    margin-left: 0.5em;
+
+  }
+  .navText{
+    font-size: 1rem;
+    margin-right: 1em;
+  }
+  
+  .navTitle{
+    font-size: 1.2rem;
+    margin-left: 1em;
+  }
+    
+}
+
+@media only screen and (min-width: 768px) {
+  .melodifyLogo{
+    height: 40%;
+  }
+  .navText{
+    font-size: 1.2rem;
+    margin-right: 1em;
+  }
+  
+  .navTitle{
+    font-size: 1.4rem;
+    margin-left: 1em;
+  }
+
+}
+
+@media only screen and (min-width: 992px) {
+  .navBar{
+    width: 100vw;
+    height: 9vh;
+  }
+  .melodifyLogo{
+    height: 40%;
+  }
+  .navText{
+    font-size: 1.8rem;
+    margin-right: 1em;
+  }
+  
+  .navTitle{
+    font-size: 2.2rem;
+    margin-left: 1em;
+  }
+
+}
+
+@media only screen and (min-width: 1200px) {
+  .navBar{
+    width: 100vw;
+    height: 7vh;
+  }
+  .melodifyLogo{
+    height: 60%;
+  }
+  .navText{
+    font-size: 2rem;
+    margin-right: 1em;
+  }
+  
+  .navTitle{
+    font-size: 2.4rem;
+    margin-left: 1em;
+  }
+
+}
+
+@media only screen and (orientation: portrait) {
+  .navBar{
+    width: 100vw;
+    height: 7vh;
+  }
+}

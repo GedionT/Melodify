@@ -5,9 +5,9 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class MusicServiceService {
-//   root = "http://localhost:5000";
+  root = "http://localhost:8080";
     // root = "https://melodi-fy.herokuapp.com";
-  root="";
+  // root="";
   constructor(private http: HttpClient) { 
   }
 

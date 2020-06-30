@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 import { MusicServiceService } from './music-service.service';
 import { HomeComponent } from './home/home.component';
-import { AboutPageComponent } from './about-page/about-page.component'
+import { AboutPageComponent } from './about-page/about-page.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    AboutPageComponent
+    AboutPageComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
