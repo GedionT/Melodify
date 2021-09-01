@@ -1,6 +1,6 @@
-# [Melodify](www.melodify.tech)
+# [Melodify](https://melodi-fy.web.app)
 
-- [Hear your sites](melodi-fy.herokuapp.com)
+- [Hear your sites](https://melodi-fy.web.app)
 
 Ever wondered what a website content might sound like?
 Melodify was a weekend project built to do just that. Enter a URL of your
